@@ -1,15 +1,17 @@
 import random
 
+campo_tamanho = 4 #Global
+
 def colocandoBola(campo):
-    campo_tam = 5
+    #campo_tamanho = 5 Global
     
     tem_bola = False
     
     campo_linha_X = 0
     campo_coluna_X = 0
     
-    for i in range(campo_tam):
-        for j in range(campo_tam):
+    for i in range(campo_tamanho):
+        for j in range(campo_tamanho):
             if campo[i][j] == 'O':
                 tem_bola = True
             elif campo[i][j] == 'X':
@@ -18,8 +20,8 @@ def colocandoBola(campo):
                 
     if tem_bola == False:
         while True:
-            campo_linha_O = random.randint(0,4)
-            campo_coluna_O = random.randint(0,4)
+            campo_linha_O = random.randint(0,campo_tamanho-1)
+            campo_coluna_O = random.randint(0,campo_tamanho-1)
             
             if campo_linha_O != campo_linha_X or campo_coluna_O != campo_coluna_X:
                 campo[campo_linha_O][campo_coluna_O] = 'O'
@@ -27,7 +29,7 @@ def colocandoBola(campo):
 
 def campoJogo(campo):
     
-    campo_tamanho = 5
+    #campo_tamanho = 5 Global
     
     for i in range(campo_tamanho):
         for j in range(campo_tamanho):
@@ -38,14 +40,14 @@ def campoJogo(campo):
         
 def preenchendoCampo(campo):
     
-    campo_tamanho = 4
+    #campo_tamanho = 4 Global
     
     while True:
         
-        campo_linha_X = random.randint(0,campo_tamanho)
-        campo_coluna_X = random.randint(0,campo_tamanho)
-        campo_linha_O = random.randint(0,campo_tamanho)
-        campo_coluna_O = random.randint(0,campo_tamanho)
+        campo_linha_X = random.randint(0,campo_tamanho-1)
+        campo_coluna_X = random.randint(0,campo_tamanho-1)
+        campo_linha_O = random.randint(0,campo_tamanho-1)
+        campo_coluna_O = random.randint(0,campo_tamanho-1)
         
         if campo_linha_X != campo_coluna_X or campo_coluna_X != campo_coluna_O:
             campo[campo_linha_X][campo_coluna_X] = 'X'
@@ -69,10 +71,10 @@ def controleJogo(entrada,campo):
         moveRight(campo,linha_coluna)
           
 def auxControleJogo(campo,linha_coluna):
-    tamCampo = 5
+    #campo_tamanho = 5 Global
     
-    for i in range(tamCampo):
-        for j in range(tamCampo):
+    for i in range(campo_tamanho):
+        for j in range(campo_tamanho):
             if campo[i][j] == 'X':
                 linha_coluna[0] = i
                 linha_coluna[1] = j
@@ -108,7 +110,7 @@ def auxMoves(campo,linha_coluna,linha_ou_coluna,fim_tabela,move_up_down,move_lef
         
 "--------------------------------------------------"
 
-campo = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']]
+campo = [[' ',' ',' ',' '],[' ',' ',' ',' '],[' ',' ',' ',' '],[' ',' ',' ',' ']]
 preenchendoCampo(campo)
 
 while True:
